@@ -1,6 +1,7 @@
 import express from "express";
-import { login, signout, signup } from "../controllers/auth.controller.js";
+import { login, refreshAccessToken, signout, signup } from "../controllers/auth.controller.js";
 import { upload } from "../middleware/multer.middleware.js";
+import verifyJWT from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
@@ -19,6 +20,7 @@ router.post(
   ]),
   signup
 );
-router.post("/signout", signout);
+router.post("/signout", verifyJWT, signout);
+router.post("/refresh", refreshAccessToken);
 
 export default router;

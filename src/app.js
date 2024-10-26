@@ -16,4 +16,12 @@ app.use(
   })
 );
 
+// import you API routers
+import authRouter from './routes/auth.route.js'
+
+
+// define your API routers
+app.use("/api/v1/auth", authRouter)
+// app.use("/api/v1/auth", authRouter)
+
 export default app;
